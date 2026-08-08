@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SolarSense - Data Loading</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+
+<div class="sidebar">
+
+    <div class="logo">
+        <h2>☀ SolarSense</h2>
+    </div>
+
+    <ul>
+
+        <li class="active">
+            <a href="/">
+                <i class="fa-solid fa-database"></i>
+                Data Loading
+            </a>
+        </li>
+
+        <li>
+            <a href="/eda">
+                <i class="fa-solid fa-chart-column"></i>
+                EDA
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <i class="fa-solid fa-broom"></i>
+                Preprocessing
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <i class="fa-solid fa-brain"></i>
+                Model Training
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <i class="fa-solid fa-bolt"></i>
+                Prediction
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <i class="fa-solid fa-circle-info"></i>
+                About
+            </a>
+        </li>
+
+    </ul>
+
+</div>
+
+
+<!-- ================= MAIN CONTENT ================= -->
+
+<div class="content">
+
+    <h1>📊 Data Loading</h1>
+
+    <p>
+        SolarSense Solar Power Generation Dataset
+    </p>
+
+
+    <!-- ================= SUMMARY CARDS ================= -->
+
+    <div class="cards">
+
+        <div class="card">
+
+            <i class="fa-solid fa-table"></i>
+
+            <h3>Total Rows</h3>
+
+            <p>{{ n_rows }}</p>
+
+        </div>
+
+
+        <div class="card">
+
+            <i class="fa-solid fa-columns"></i>
+
+            <h3>Total Columns</h3>
+
+            <p>{{ n_cols }}</p>
+
+        </div>
+
+
+        <div class="card">
+
+            <i class="fa-solid fa-file-csv"></i>
+
+            <h3>Dataset</h3>
+
+            <p style="font-size:16px;">
+                Plant_1_Generation_Data.csv
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= COLUMNS ================= -->
+
+    <div class="welcome-box">
+
+        <h2>Dataset Columns</h2>
+
+        <div class="column-list">
+
+            {% for column in columns %}
+
+                <span>{{ column }}</span>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= DATA PREVIEW ================= -->
+
+    <div class="welcome-box">
+
+        <h2>First 10 Records</h2>
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        {% for column in columns %}
+
+                        <th>{{ column }}</th>
+
+                        {% endfor %}
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for row in preview %}
+
+                    <tr>
+
+                        {% for column in columns %}
+
+                        <td>{{ row[column] }}</td>
+
+                        {% endfor %}
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= MISSING VALUES ================= -->
+
+    <div class="welcome-box">
+
+        <h2>Missing Values</h2>
+
+        <div class="missing-grid">
+
+            {% for column, count in missing_counts.items() %}
+
+            <div class="missing-item">
+
+                <strong>{{ column }}</strong>
+
+                <span>{{ count }}</span>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

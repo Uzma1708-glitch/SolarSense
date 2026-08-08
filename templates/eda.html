@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SolarSense - EDA Dashboard</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+
+    <div class="logo">
+        <h2>☀ SolarSense</h2>
+    </div>
+
+    <ul>
+
+        <li>
+            <a href="/">
+                <i class="fas fa-home"></i>
+                Dashboard
+            </a>
+        </li>
+
+        <li class="active">
+            <a href="/eda">
+                <i class="fas fa-chart-line"></i>
+                EDA
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <i class="fas fa-filter"></i>
+                Preprocessing
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <i class="fas fa-brain"></i>
+                Model Training
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <i class="fas fa-bolt"></i>
+                Prediction
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <i class="fas fa-info-circle"></i>
+                About
+            </a>
+        </li>
+
+    </ul>
+
+</div>
+
+<!-- Main Content -->
+<div class="content">
+
+    <h1>Exploratory Data Analysis</h1>
+
+    <p>
+        This page displays all charts generated from the
+        Solar Power Generation dataset.
+    </p>
+
+    <div class="charts-container">
+
+        {% for chart in charts %}
+
+        <div class="chart">
+
+            <h3>
+                {{ chart.replace(".png","").replace("_"," ").title() }}
+            </h3>
+
+            <img src="{{ url_for('static', filename='charts/' + chart) }}"
+                 alt="{{ chart }}">
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+</body>
+</html>
