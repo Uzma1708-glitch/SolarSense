@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 
-DATA_PATH = r"C:\Users\pakal\PycharmProjects\PythonProject3\Plant_1_Generation_Data.csv"
+DATA_PATH = r"D:\TERM 4\PythonProject3\PythonProject3\Plant_1_Generation_Data.csv"
 
 
 def load_data(path: str = DATA_PATH) -> pd.DataFrame:
