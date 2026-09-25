@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="page-title">{{ model_name }}</h1>
+
+<p class="page-description">
+    Performance evaluation for {{ model_name }} regression model.
+</p>
+
+
+<div class="grid">
+
+    <div class="stat-card">
+        <h3>MAE</h3>
+        <p>{{ metrics.MAE }}</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>MSE</h3>
+        <p>{{ metrics.MSE }}</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>RMSE</h3>
+        <p>{{ metrics.RMSE }}</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>R² Score</h3>
+        <p>{{ metrics.R2 }}</p>
+    </div>
+
+</div>
+
+
+<div class="card">
+
+    <h2>Model Performance</h2>
+
+    <table class="styled-table">
+
+        <thead>
+            <tr>
+                <th>Metric</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>Mean Absolute Error (MAE)</td>
+                <td>{{ metrics.MAE }}</td>
+            </tr>
+
+            <tr>
+                <td>Mean Squared Error (MSE)</td>
+                <td>{{ metrics.MSE }}</td>
+            </tr>
+
+            <tr>
+                <td>Root Mean Squared Error (RMSE)</td>
+                <td>{{ metrics.RMSE }}</td>
+            </tr>
+
+            <tr>
+                <td>R² Score</td>
+                <td>{{ metrics.R2 }}</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+<a href="/tree-models"
+   class="model-button"
+   style="margin-top:25px; width:200px; height:60px;">
+    ← Back to Tree Models
+</a>
+
+
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+
+.tree-model-container {
+    display: grid;
+    grid-template-columns: repeat(3, 220px);
+    gap: 25px;
+    margin-top: 35px;
+}
+
+.tree-model-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 220px;
+    height: 100px;
+
+    background: #ffffff;
+
+    border: 1px solid #dddddd;
+    border-radius: 12px;
+
+    color: #222222 !important;
+
+    text-decoration: none !important;
+
+    font-size: 18px;
+    font-weight: 600;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+
+    transition: all 0.2s ease;
+}
+
+.tree-model-button:hover {
+    transform: translateY(-4px);
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+</style>
+
+
+<h1 class="page-title">Tree Based Models</h1>
+
+<p class="page-description">
+    Select a tree-based regression model to evaluate AC Power prediction.
+</p>
+
+
+<div class="tree-model-container">
+
+    <a href="/tree-models/decision-tree"
+       class="tree-model-button">
+        Decision Tree
+    </a>
+
+    <a href="/tree-models/random-forest"
+       class="tree-model-button">
+        Random Forest
+    </a>
+
+    <a href="/tree-models/adaboost"
+       class="tree-model-button">
+        AdaBoost
+    </a>
+
+    <a href="/tree-models/gradient-boosting"
+       class="tree-model-button">
+        Gradient Boosting
+    </a>
+
+    <a href="/tree-models/xgboost"
+       class="tree-model-button">
+        XGBoost
+    </a>
+
+    <a href="/tree-models/lightgbm"
+       class="tree-model-button">
+        LightGBM
+    </a>
+
+</div>
+
+{% endblock %}
